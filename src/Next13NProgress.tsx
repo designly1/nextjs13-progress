@@ -1,6 +1,5 @@
 'use client';
 
-import Router from 'next/router';
 import * as NProgress from 'nprogress';
 import * as PropTypes from 'prop-types';
 import React, { Suspense, useEffect } from 'react';
@@ -68,7 +67,6 @@ const Next13NProgress = ({
 	options,
 	nonce,
 	transformCSS = css => (
-        // @ts-ignore
 		<style nonce={nonce} jsx global>
 			{css}
 		</style>
@@ -81,53 +79,6 @@ const Next13NProgress = ({
 			NProgress.configure(options);
 		}
 	}, []);
-
-	const routeChangeStart = (
-		_: string,
-		{
-			shallow,
-		}: {
-			shallow: boolean;
-		},
-	) => {
-		if (!shallow || showOnShallow) {
-			NProgress.set(startPosition);
-			NProgress.start();
-		}
-	};
-
-	const routeChangeEnd = (
-		_: string,
-		{
-			shallow,
-		}: {
-			shallow: boolean;
-		},
-	) => {
-		if (!shallow || showOnShallow) {
-			if (timer) clearTimeout(timer);
-			timer = setTimeout(() => {
-				NProgress.done(true);
-			}, stopDelayMs);
-		}
-	};
-
-	const routeChangeError = (
-		_err: Error,
-		_url: string,
-		{
-			shallow,
-		}: {
-			shallow: boolean;
-		},
-	) => {
-		if (!shallow || showOnShallow) {
-			if (timer) clearTimeout(timer);
-			timer = setTimeout(() => {
-				NProgress.done(true);
-			}, stopDelayMs);
-		}
-	};
 
 	const css = `
     #nprogress {

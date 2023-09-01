@@ -36,39 +36,13 @@ function Innards() {
     (0, react_1.useEffect)(() => (0, events_1.onComplete)(), [pathname, searchParams]);
     return null;
 }
-const Next13NProgress = ({ color = '#29D', startPosition = 0.3, stopDelayMs = 200, height = 3, showOnShallow = true, options, nonce, transformCSS = css => (
-// @ts-ignore
-(0, jsx_runtime_1.jsx)("style", Object.assign({ nonce: nonce, jsx: true, global: true }, { children: css }))), }) => {
+const Next13NProgress = ({ color = '#29D', startPosition = 0.3, stopDelayMs = 200, height = 3, showOnShallow = true, options, nonce, transformCSS = css => ((0, jsx_runtime_1.jsx)("style", Object.assign({ nonce: nonce, jsx: true, global: true }, { children: css }))), }) => {
     let timer = null;
     (0, react_1.useEffect)(() => {
         if (options) {
             NProgress.configure(options);
         }
     }, []);
-    const routeChangeStart = (_, { shallow, }) => {
-        if (!shallow || showOnShallow) {
-            NProgress.set(startPosition);
-            NProgress.start();
-        }
-    };
-    const routeChangeEnd = (_, { shallow, }) => {
-        if (!shallow || showOnShallow) {
-            if (timer)
-                clearTimeout(timer);
-            timer = setTimeout(() => {
-                NProgress.done(true);
-            }, stopDelayMs);
-        }
-    };
-    const routeChangeError = (_err, _url, { shallow, }) => {
-        if (!shallow || showOnShallow) {
-            if (timer)
-                clearTimeout(timer);
-            timer = setTimeout(() => {
-                NProgress.done(true);
-            }, stopDelayMs);
-        }
-    };
     const css = `
     #nprogress {
         pointer-events: none;
