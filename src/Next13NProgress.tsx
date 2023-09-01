@@ -77,6 +77,7 @@ const Next13NProgress = ({
 	useEffect(() => {
 		if (options) {
 			NProgress.configure(options);
+			NProgress.set(startPosition);
 		}
 	}, []);
 

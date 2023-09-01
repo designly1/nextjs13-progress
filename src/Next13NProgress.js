@@ -41,6 +41,7 @@ const Next13NProgress = ({ color = '#29D', startPosition = 0.3, stopDelayMs = 20
     (0, react_1.useEffect)(() => {
         if (options) {
             NProgress.configure(options);
+            NProgress.set(startPosition);
         }
     }, []);
     const css = `
