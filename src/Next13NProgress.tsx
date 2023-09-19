@@ -67,7 +67,7 @@ const Next13NProgress = ({
 	options,
 	nonce,
 	transformCSS = css => (
-		<style nonce={nonce} jsx global>
+		<style nonce={nonce} jsx={+true} global={+true}>
 			{css}
 		</style>
 	),
