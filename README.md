@@ -67,6 +67,79 @@ If no props are passed to `<Next13NProgress />`, below is the default configurat
 - `height`: height of progressbar in `px`.
 - `showOnShallow`: You can choose whether you want the progressbar to be displayed if you're using shallow routing. It takes a boolean. Learn more about shallow routing [in Next.js docs](https://nextjs.org/docs/routing/shallow-routing).
 
+## Advanced usage
+
+### Link
+
+The provided `Link` component adds an `onClick` event to the links it generates. This handler will:
+1. Verify the `href` attribute of the link, and the characteristics of the click event. Depending on both conditions, it will start the progress bar.
+2. Fire any additional `onClick` event that you provided
+
+In some cases, you might need a greater level of control over the `onClick` event. For that reason, the handler can be imported so as to create your own `Link` component as needed.
+
+#### Example 1:
+
+Don't attach the progressbar `onClick` event if we've already supplied an `onClick` event of our own.
+
+```
+'use client';
+
+import NextLink, { LinkProps } from 'next/link';
+import { forwardRef } from 'react';
+import { linkClicked as progressBarLinkClicked } from 'nextjs13-progress';
+
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>((
+	{ onClick, ...rest },
+	ref,
+) => (
+	<NextLink
+		onClick={event => {
+			if (onClick) {
+				// fire only the existing event only
+				onClick(event);
+			} else {
+				// fire the progressbar event
+				progressBarLinkClicked(event);
+			}
+		}}
+		{...rest}
+		ref={ref}
+	/>
+));
+```
+
+#### Example 2:
+
+Clicking a link triggers a browser prompt. Since the link only clicks through if the user confirms, we need to also assure that the progress bar also only starts if that condition is met.
+
+```
+'use client';
+
+import NextLink, { LinkProps } from 'next/link';
+import { forwardRef } from 'react';
+import { linkClicked as progressBarLinkClicked } from 'nextjs13-progress';
+
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>((
+	{ ...rest },
+	ref,
+) => (
+	<NextLink
+		onClick={event => {
+			const confirm = window.confirm("Are you sure?");
+			if (confirm) {
+				// proceed as normal
+				progressBarLinkClicked(event);
+			} else {
+				// cancel the click
+				event.preventDefault();
+			}
+		}}
+		{...rest}
+		ref={ref}
+	/>
+));
+```
+
 ## Demo
 
 [Click Here](https://nextjs13-progress-demo.vercel.app/) for a full working Next.js demo site.
