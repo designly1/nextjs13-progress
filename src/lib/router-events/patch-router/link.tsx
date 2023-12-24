@@ -1,23 +1,19 @@
 'use client';
 
-import NextLink from 'next/link';
+import NextLink, { LinkProps } from 'next/link';
 import { forwardRef } from 'react';
 
 import { onStart } from '../events';
 import { shouldTriggerStartEvent } from './should-trigger-start-event';
 
-export const Link = forwardRef<HTMLAnchorElement, React.ComponentProps<'a'>>(function Link(
-	{ href, onClick, ...rest },
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
+	{ onClick, ...rest },
 	ref,
 ) {
-	const useLink = href && href.startsWith('/');
-	if (!useLink) return <a href={href} onClick={onClick} {...rest} />;
-
 	return (
 		<NextLink
-			href={href}
 			onClick={event => {
-				if (shouldTriggerStartEvent(href, event)) onStart();
+				linkClicked(event);
 				if (onClick) onClick(event);
 			}}
 			{...rest}
@@ -25,3 +21,11 @@ export const Link = forwardRef<HTMLAnchorElement, React.ComponentProps<'a'>>(fun
 		/>
 	);
 });
+
+export function linkClicked(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+	const anchorElement = event.currentTarget as HTMLAnchorElement;
+	const { href } = anchorElement;
+	if (href || href.startsWith('/')) {
+		if (shouldTriggerStartEvent(href, event)) onStart();
+	}
+}
