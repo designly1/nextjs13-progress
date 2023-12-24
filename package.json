@@ -1,6 +1,6 @@
 {
   "name": "nextjs13-progress",
-  "version": "1.1.45",
+  "version": "1.1.5",
   "description": "An implementation of n-progress for use with the Next.js 13 app router.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,6 +30,12 @@
     "name": "Jay Simons",
     "url": "https://jay.designly.biz"
   },
+  "contributors": [
+    {
+      "name": "Steven McCoy",
+      "url": "https://github.com/gamma613"
+    }
+  ],
   "license": "MIT",
   "peerDependencies": {
     "next": ">=13.4",
