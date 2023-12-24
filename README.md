@@ -1,5 +1,8 @@
 # nextjs13-progress
 
+![npm](https://img.shields.io/npm/v/nextjs13-progress)
+[![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)
+
 ## Description
 
 An implementation of n-progress for use with the Next.js 13 app router. This project is based on the [Nextjs Progressbar](https://www.npmjs.com/package/nextjs-progressbar)
@@ -143,6 +146,17 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((
 ## Demo
 
 [Click Here](https://nextjs13-progress-demo.vercel.app/) for a full working Next.js demo site.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Contributing
 
