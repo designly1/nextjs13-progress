@@ -1,7 +1,7 @@
 # nextjs13-progress
 
 ![npm](https://img.shields.io/npm/v/nextjs13-progress)
-[![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/github/all-contributors/designly1/nextjs13-progress?color=ee8449&style=flat-square)](#contributors)
 
 ## Description
 
