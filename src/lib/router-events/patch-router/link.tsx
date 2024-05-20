@@ -8,7 +8,7 @@ import { shouldTriggerStartEvent } from './should-trigger-start-event';
 
 type ExtendedLinkProps<RouteInferType = any> = LinkProps & {
 	className?: string;
-	children?: ReactNode;
+	children?: ReactNode | string;
 };
 
 export const Link = forwardRef<HTMLAnchorElement, ExtendedLinkProps>(function Link(
