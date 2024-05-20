@@ -1,13 +1,18 @@
 'use client';
 
 import NextLink, { LinkProps } from 'next/link';
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 import { onStart } from '../events';
 import { shouldTriggerStartEvent } from './should-trigger-start-event';
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
-	{ onClick, ...rest },
+type ExtendedLinkProps<RouteInferType = any> = LinkProps & {
+	className?: string;
+	children?: ReactNode;
+};
+
+export const Link = forwardRef<HTMLAnchorElement, ExtendedLinkProps>(function Link(
+	{ onClick, className, children, ...rest },
 	ref,
 ) {
 	return (
@@ -16,12 +21,14 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
 				linkClicked(event);
 				if (onClick) onClick(event);
 			}}
+			className={className}
 			{...rest}
 			ref={ref}
-		/>
+		>
+			{children}
+		</NextLink>
 	);
 });
-
 export function linkClicked(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 	const anchorElement = event.currentTarget as HTMLAnchorElement;
 	const { href } = anchorElement;
