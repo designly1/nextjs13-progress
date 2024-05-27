@@ -1,7 +1,7 @@
 'use client';
 
 import NextLink, { LinkProps } from 'next/link';
-import { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 
 import { onStart } from '../events';
 import { shouldTriggerStartEvent } from './should-trigger-start-event';
@@ -9,10 +9,16 @@ import { shouldTriggerStartEvent } from './should-trigger-start-event';
 type ExtendedLinkProps<RouteInferType = any> = LinkProps & {
 	className?: string;
 	children?: ReactNode | string;
+	target?: React.HTMLAttributeAnchorTarget;
+	style?: React.CSSProperties;
+	id?: string;
+	[key: string]: any;
+	rel?: string
+	onAbort: React.ReactEventHandler<HTMLAnchorElement>
 };
 
 export const Link = forwardRef<HTMLAnchorElement, ExtendedLinkProps>(function Link(
-	{ onClick, className, children, ...rest },
+	{ onClick, className, children, id, ...rest },
 	ref,
 ) {
 	return (
@@ -22,6 +28,7 @@ export const Link = forwardRef<HTMLAnchorElement, ExtendedLinkProps>(function Li
 				if (onClick) onClick(event);
 			}}
 			className={className}
+			id={id}
 			{...rest}
 			ref={ref}
 		>
