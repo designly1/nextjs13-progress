@@ -38,16 +38,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				<main className="min-h-screen flex flex-col">
-					<header className="flex items-center gap-6 justify-center text-2xl text-white bg-slate-800 py-4">
-						<Link href="/">Home</Link>
-						<Link href="/page2">Page2</Link>
-					</header>
-					{children}
-				</main>
-				<Next13NProgress color="red" height={5} />
-			</body>
+                   <body className={inter.className}>
+			<main className="min-h-screen flex flex-col">
+                            <header className="flex items-center gap-6 justify-center text-2xl text-white bg-slate-800 py-4">
+				<Link href="/">Home</Link>
+				<Link href="/page2">Page2</Link>
+                            </header>
+				{children}
+			</main>
+			<Next13NProgress color="red" height={5} />
+                   </body>
 		</html>
 	);
 }
