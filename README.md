@@ -84,7 +84,7 @@ In some cases, you might need a greater level of control over the `onClick` even
 
 Don't attach the progressbar `onClick` event if we've already supplied an `onClick` event of our own.
 
-```
+```jsx
 'use client';
 
 import NextLink, { LinkProps } from 'next/link';
@@ -115,7 +115,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((
 
 Clicking a link triggers a browser prompt. Since the link only clicks through if the user confirms, we need to also assure that the progress bar also only starts if that condition is met.
 
-```
+```jsx
 'use client';
 
 import NextLink, { LinkProps } from 'next/link';
