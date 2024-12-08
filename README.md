@@ -38,16 +38,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				<main className="min-h-screen flex flex-col">
-					<header className="flex items-center gap-6 justify-center text-2xl text-white bg-slate-800 py-4">
-						<Link href="/">Home</Link>
-						<Link href="/page2">Page2</Link>
-					</header>
-					{children}
-				</main>
-				<Next13NProgress color="red" height={5} />
-			</body>
+                   <body className={inter.className}>
+			<main className="min-h-screen flex flex-col">
+                            <header className="flex items-center gap-6 justify-center text-2xl text-white bg-slate-800 py-4">
+				<Link href="/">Home</Link>
+				<Link href="/page2">Page2</Link>
+                            </header>
+				{children}
+			</main>
+			<Next13NProgress color="red" height={5} />
+                   </body>
 		</html>
 	);
 }
@@ -84,7 +84,7 @@ In some cases, you might need a greater level of control over the `onClick` even
 
 Don't attach the progressbar `onClick` event if we've already supplied an `onClick` event of our own.
 
-```
+```jsx
 'use client';
 
 import NextLink, { LinkProps } from 'next/link';
@@ -115,7 +115,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((
 
 Clicking a link triggers a browser prompt. Since the link only clicks through if the user confirms, we need to also assure that the progress bar also only starts if that condition is met.
 
-```
+```jsx
 'use client';
 
 import NextLink, { LinkProps } from 'next/link';
