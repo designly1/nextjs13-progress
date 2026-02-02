@@ -13,16 +13,17 @@ type ExtendedLinkProps<RouteInferType = any> = LinkProps & {
 	style?: React.CSSProperties;
 	id?: string;
 	[key: string]: any;
-	rel?: string
-	onAbort: React.ReactEventHandler<HTMLAnchorElement>
+	rel?: string;
+	onAbort: React.ReactEventHandler<HTMLAnchorElement>;
 };
 
 export const Link = forwardRef<HTMLAnchorElement, ExtendedLinkProps>(function Link(
-	{ onClick, className, children, id, ...rest },
+	{ onClick, className, children, id, href, ...rest },
 	ref,
 ) {
 	return (
 		<NextLink
+			href={href}
 			onClick={event => {
 				linkClicked(event);
 				if (onClick) onClick(event);
