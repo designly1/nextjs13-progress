@@ -145,7 +145,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((
 
 ## Demo
 
-[Click Here](https://nextjs13-progress-demo.vercel.app/) for a full working Next.js demo site.
+[Click Here](https://nextjs13-progress.vercel.app) for a full working Next.js demo site.
 
 ## Contributors
 

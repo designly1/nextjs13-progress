@@ -1,7 +1,6 @@
 {
   "name": "nextjs13-progress",
-  "version": "1.4.0",
-  "type": "module",
+  "version": "1.4.2",
   "description": "An implementation of n-progress for use with the Next.js 13 app router.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
